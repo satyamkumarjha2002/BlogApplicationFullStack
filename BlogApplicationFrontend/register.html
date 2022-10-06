@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    
+    <title>Document</title>
+</head>
+<body>
+    <div id="navbar">
+         
+    </div>
+     <div id="container">
+        <div id="register_form">
+            <h2>Register</h2>
+            <form action="">
+                <input id="name" type="text" placeholder="name">
+                <input id="age" type="number" placeholder="age">
+                <input id="email" type="email" placeholder="email">
+                <input id="password" type="password" placeholder="password">
+                <input id="submit" type="submit" value="Register" >
+           </form>
+        </div>
+     </div>
+</body>
+</html>
+<script type="module">
+    import {navbar} from "./components/navbar.js";
+    document.querySelector("#navbar").innerHTML = navbar();
+</script>
+<script src="script/register.js"></script>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/navbar.css">
+   
+    <title>Document</title>
+    <style>
+        #profile{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+         
+    </div>
+
+    <div id="container">
+         <form action="">
+            <input id="email" type="email" placeholder="Enter your email">
+            <input id="password" type="password" placeholder="Enter Password">
+            <input id="submit" type="submit" value = "Login">
+         </form>
+    </div>
+    
+</body>
+</html>
+<script type="module">
+    import {navbar} from "./components/navbar.js";
+    document.querySelector("#navbar").innerHTML = navbar();
+</script>
+
+<script src="script/login.js"></script>

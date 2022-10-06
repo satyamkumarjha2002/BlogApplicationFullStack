@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <title>Document</title>
+    <style>
+        #reg{
+            display: none;
+        }
+        #login{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="navbar">
+    </div>
+    
+    <div id="details">
+       <div>
+        <p>Name :-</p>
+        <p id="name"></p>
+       </div>
+
+       <div>
+        <div>Email :-</div>
+        <div id="email"></div>
+       </div>
+
+       <div>
+        <div>Age :-</div>
+        <div id="age"></div>
+       </div>
+
+       <div>
+        <div>Post :-</div>
+        <div id="post"></div>
+        <div id="create_psot"><a href="createPost.html">Create Post</a></div>
+        <div id="show_post"><a href="show_post.html">show post</a></div>
+       </div>
+    </div>
+
+</body>
+</html>
+
+<script type="module">
+    import {navbar} from "./components/navbar.js";
+    document.querySelector("#navbar").innerHTML = navbar();
+</script>
+
+<script src="script/profile.js"></script>

@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+#details{
+    width: 80%;
+    margin: auto;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+#details>div{
+    display: flex;
+    gap: 30px;
+}
+#details>div>:first-child{
+  font-size: 20px;
+  font-weight: bold;
+}

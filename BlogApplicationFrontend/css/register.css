@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    overflow: hidden;
+}
+
+#container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#register_form>h2{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#register_form>form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#register_form>form>input{
+    font-size: 20px;
+    padding: 10px;
+}

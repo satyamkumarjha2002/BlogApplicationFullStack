@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/createPost.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="navbar">
+
+    </div>
+
+    <div id="container">
+
+        <h2>Main heading</h2>
+        <div class="text_area">
+            <textarea name="Mainheading" id="Mainheading" cols="40" rows="2">
+               
+            </textarea>
+        </div>
+
+        <h3>Sub heading</h3>
+        <div class="text_area">
+            <textarea name="Subheading" id="Subheading" cols="60" rows="3">
+               
+            </textarea>
+        </div>
+
+        <h5>content</h5>
+        <div class="text_area">
+            <textarea name="content" id="post" cols="60" rows="10">
+               
+            </textarea>
+        </div>
+
+        <input id="imageLink" type="text" placeholder="image Link">
+        <button onclick="createPost()" id="post_button">Post</button>
+    </div>
+    
+</body>
+</html>
+
+<script type="module">
+    import {navbar} from "./components/navbar.js";
+    document.querySelector("#navbar").innerHTML = navbar();
+</script>
+
+<script src="script/createPost.js"></script>

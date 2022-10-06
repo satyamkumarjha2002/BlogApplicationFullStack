@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    overflow: hidden;
+}
+
+#container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#container>form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#container>form>input{
+    padding: 10px;
+    font-size: 20px;
+}
