@@ -8,6 +8,9 @@ import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.masai.exceptions.LoginException;
@@ -72,14 +75,15 @@ public class PostService implements PostServiceIntr {
 	}
 
 	@Override
-	public List<Post> getAllPost() throws PostException {
+	public List<Post> getAllPost(String pageNo,String totalCount,String sortByValue) throws PostException {
 
-		List<Post> list = postRepo.findAll();
-
+		Page<Post> pages = postRepo.findAll(PageRequest.of(Integer.parseInt(pageNo) ,Integer.parseInt(totalCount)).withSort(Sort.Direction.DESC,sortByValue));
+         
+		List<Post> list = pages.getContent();
 		if (list.isEmpty()) {
 			throw new PostException("Currently we haven't any post");
 		}
-		Collections.reverse(list);
+		//Collections.reverse(list);
 		return list;
 	}
 

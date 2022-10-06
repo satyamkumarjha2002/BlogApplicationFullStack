@@ -156,3 +156,52 @@
     line-height: 1.8em;
     word-spacing: 7px;
 }
+
+#pagination{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+#pagination>:nth-child(2){
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+#left_arrow{
+    font-size: 30px;
+}
+
+#left_arrow:hover{
+    cursor: pointer;
+    transform: scale(0.7);
+}
+
+#right_arrow{
+    font-size: 30px;
+}
+
+#right_arrow:hover{
+    cursor: pointer;
+    transform: scale(0.7);
+}
+
+#page_number{
+}
+
+
+#pageNo{
+    font-size: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 8px;
+    padding-right: 10px;
+}
+
+#pageNo{
+    cursor: pointer;
+}

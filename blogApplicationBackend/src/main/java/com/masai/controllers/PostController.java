@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.masai.models.Post;
@@ -35,8 +37,12 @@ public class PostController {
     }
     
     @GetMapping("/getAllPost")
-    public ResponseEntity<List<Post>> getAllPost(){
-    	return new ResponseEntity<List<Post>>(postServiceIntr.getAllPost(),HttpStatus.OK);
+    public ResponseEntity<List<Post>> getAllPost(
+    		@RequestParam(required = false,defaultValue = "1") String pageNo ,
+    		@RequestParam(required = false, defaultValue = "10") String totalCount,
+    		@RequestParam(required = false,defaultValue = "id") String sortByValue
+    		){
+    	return new ResponseEntity<List<Post>>(postServiceIntr.getAllPost(pageNo,totalCount,sortByValue),HttpStatus.OK);
     }
     
     @GetMapping("/getPost/{uuid}")

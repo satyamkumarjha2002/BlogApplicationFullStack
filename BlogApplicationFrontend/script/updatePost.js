@@ -51,6 +51,7 @@ function showRes(result) {
     if (result.message != undefined) {
         alert(result.message);
     }else{
+        
         alert("post updated");
     }
 }

@@ -22,6 +22,37 @@
 
     </div>
 
+    <div id="pagination">
+
+        <div id="contentPerPage">
+            <select onchange="change_page_per_content()" name="contentPerPage" id="pageNo">
+                <option value="10">count</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="80">80</option>
+                <option value="100">100</option>
+            </select>
+        </div>
+
+        <div id="pageNo">
+
+            <div>
+                <i onclick="decrease_page()" id="left_arrow" class="fa-solid fa-arrow-left-long"></i>
+            </div>
+            
+            <div >
+                <p id="page_number"></p>
+            </div>
+
+            <div>
+                <i onclick="increase_page()" id="right_arrow" class="fa-solid fa-arrow-right-long"></i>
+            </div>
+
+
+        </div>
+    </div>
+
 </body>
 
 </html>

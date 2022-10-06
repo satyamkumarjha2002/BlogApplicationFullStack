@@ -3,14 +3,17 @@ let logedUser;
 let userEmail = localStorage.getItem("email");
 let uuid = localStorage.getItem("uuid");
 let loggedUser = null;
+let pageNo = 1;
+let contentPerPage = 10;
+let sortByValue = "id";
 
-function getAllPost(res) {
+function getAllPost(res,pageNo,contentPerPage,sortByValue) {
     loggedUser = res;
     console.log(loggedUser);
-    fetchAllPost(`http://localhost:8080/api/post/getAllPost`);
+    fetchAllPost(`http://localhost:8080/api/post/getAllPost?pageNo=${pageNo}&totalCount=${contentPerPage}&sortByValue=${sortByValue}`);
 }
 
-function getLoggedUser(url) {
+function getLoggedUser(url,pageNo,contentPerPage,sortByValue) {
     fetch(url, {
         method: 'GET',
         headers: {
@@ -22,7 +25,7 @@ function getLoggedUser(url) {
     }).then(function (res) {
         return res.json();
     }).then(function (res) {
-        getAllPost(res);
+        getAllPost(res,pageNo,contentPerPage,sortByValue);
     })
 }
 
@@ -267,4 +270,32 @@ function increaseLike(url) {
     }
 }
 
-getLoggedUser(`http://localhost:8080/api/user/getUser/${uuid}`);
+function change_page_per_content(){
+    contentPerPage = document.querySelector("#pageNo").value;
+    getLoggedUser(`http://localhost:8080/api/user/getUser/${uuid}`,pageNo,contentPerPage,sortByValue);
+}
+let pageNumber
+setTimeout(() => {
+    pageNumber = document.querySelector("#page_number");
+    pageNumber.innerText = pageNo;
+}, 200);
+
+
+function decrease_page(){
+    --pageNo;
+    if(pageNo>=1){
+        pageNumber.innerText = pageNo;
+        getLoggedUser(`http://localhost:8080/api/user/getUser/${uuid}`,pageNo,contentPerPage,sortByValue);
+    }
+    
+}
+
+function increase_page(){
+    ++pageNo;
+    if(pageNo<=100){
+        pageNumber.innerText = pageNo;
+        getLoggedUser(`http://localhost:8080/api/user/getUser/${uuid}`,pageNo,contentPerPage,sortByValue);
+    }
+}
+
+getLoggedUser(`http://localhost:8080/api/user/getUser/${uuid}`,pageNo,contentPerPage,sortByValue);
