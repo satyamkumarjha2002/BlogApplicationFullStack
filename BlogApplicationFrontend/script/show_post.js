@@ -241,9 +241,8 @@ function increaseLike(url) {
 }
 
 function updatePost(post){
-    console.log(post);
-    
-
+   localStorage.setItem("post",JSON.stringify(post));
+   window.location.href = "updatePost.html";
 }
 
 function deletePost(post){

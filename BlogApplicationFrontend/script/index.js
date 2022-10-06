@@ -11,23 +11,23 @@ function getAllPost(res) {
 }
 
 function getLoggedUser(url) {
-        fetch(url, {
-            method: 'GET',
-            headers: {
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Methods": "HEAD, GET, POST, PUT, PATCH, DELETE",
-                "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token",
-                "Content-Type": "application/json"
-            }
-        }).then(function (res) {
-            return res.json();
-        }).then(function (res) {
-            getAllPost(res);
-        })
+    fetch(url, {
+        method: 'GET',
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "HEAD, GET, POST, PUT, PATCH, DELETE",
+            "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token",
+            "Content-Type": "application/json"
+        }
+    }).then(function (res) {
+        return res.json();
+    }).then(function (res) {
+        getAllPost(res);
+    })
 }
 
 function fetchAllPost(url) {
-    
+
     fetch(url, {
         method: 'GET',
         headers: {
@@ -132,7 +132,7 @@ function displayDetails(result) {
 }
 
 function increseDisLike(url) {
-    if (loggedUser.id = null) {
+    if (loggedUser.email != null) {
         fetch(url, {
             method: 'POST',
             headers: {
@@ -147,10 +147,10 @@ function increseDisLike(url) {
 
         })
         setTimeout(() => {
-            getAllPost();
+            getLoggedUser(`http://localhost:8080/api/user/getUser/${uuid}`);
         }, 100);
     } else {
-        alert(loggedUser.message);//here exception will occour those exception will store in loggeduser if the user is not loged in and i using exception message for alert;
+        alert(loggedUser.message); //here exception will occour those exception will store in loggeduser if the user is not loged in and i using exception message for alert;
     }
 }
 
@@ -158,7 +158,6 @@ let flag = true;
 
 function increaseComment(postId, userId, commentDivPerPost) {
 
-    console.log(postId, userId)
     let commnetMainDiv = commentDivPerPost;
     commnetMainDiv.innerHTML = null;
     let input = document.createElement("input");
@@ -222,53 +221,50 @@ function increaseComment(postId, userId, commentDivPerPost) {
 
 function postComment(postId, userId) {
 
-    if(loggedUser.id!=null){
-    let text = document.getElementById("userInputCommnet").value;
-    fetch(`http://localhost:8080/api/comment/add/${postId}/${userId}`, {
-        method: 'POST',
-        body: `
+    if (loggedUser.email != null) {
+        let text = document.getElementById("userInputCommnet").value;
+        fetch(`http://localhost:8080/api/comment/add/${postId}/${userId}`, {
+            method: 'POST',
+            body: `
         {
           "text":"${text}"
         }
         `,
-        headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "HEAD, GET, POST, PUT, PATCH, DELETE",
-            "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token",
-            "Content-Type": "application/json"
-        }
-    }).then(function (res) {
-        return res.json();
-    }).then(function (res) {
-        getAllPost();
-    })
-    }else{
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "HEAD, GET, POST, PUT, PATCH, DELETE",
+                "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token",
+                "Content-Type": "application/json"
+            }
+        }).then(function (res) {
+            return res.json();
+        }).then(function (res) {
+            getLoggedUser(`http://localhost:8080/api/user/getUser/${uuid}`);
+        })
+    } else {
         alert(loggedUser.message);
     }
 }
 
 function increaseLike(url) {
-    if(loggedUser.id = null){
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "HEAD, GET, POST, PUT, PATCH, DELETE",
-            "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token",
-            "Content-Type": "application/json"
-        }
-    }).then(function (res) {
-        return res.json();
-    }).then(function (res) {
-
-    })
-    setTimeout(() => {
-        getAllPost();
-    }, 100);
-    }else{
+    if (loggedUser.email != null) {
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "HEAD, GET, POST, PUT, PATCH, DELETE",
+                "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token",
+                "Content-Type": "application/json"
+            }
+        }).then(function (res) {
+            return res.json();
+        }).then(function (res) {
+            getLoggedUser(`http://localhost:8080/api/user/getUser/${uuid}`);
+        })
+    
+    } else {
         alert(loggedUser.message);
     }
 }
-loggedUser = getLoggedUser(`http://localhost:8080/api/user/getUser/${uuid}`);
 
-
+getLoggedUser(`http://localhost:8080/api/user/getUser/${uuid}`);

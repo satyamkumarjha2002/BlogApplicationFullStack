@@ -1,32 +1,33 @@
+let post = JSON.parse(localStorage.getItem("post"));
+
 let mainHeading = document.getElementById("Mainheading");
 let subHeading = document.getElementById("Subheading");
 let content = document.getElementById("post");
 let imgLink = document.getElementById("imageLink");
+let updateButton = document.getElementById("post_button");
 
-mainHeading.value = "";
-subHeading.value = "";
-content.value = "";
-imgLink.value = "";
+mainHeading.value = post.heading;
+subHeading.value = post.subHeading;
+content.value = post.content;
+imgLink.value = post.imgLink;
 
-function createPost() {
-
+function updatePost(){
     mainHeading = (document.getElementById("Mainheading").value).trim();
     subHeading = (document.getElementById("Subheading").value).trim();
     content = (document.getElementById("post").value).trim();
     imgLink = (document.getElementById("imageLink").value).trim();
     let uuid = localStorage.getItem("uuid");
     console.log(uuid);
-    genratePost(`http://localhost:8080/api/post/create/${uuid}`);
-}
+    let url = `http://localhost:8080/api/post/update`;
 
-function genratePost(url) {
     mainHeading = mainHeading.replace(/(\r\n|\n|\r)/gm, "");
     subHeading = subHeading.replace(/(\r\n|\n|\r)/gm, "");
     content = content.replace(/(\r\n|\n|\r)/gm, "");
     imgLink = imgLink.replace(/(\r\n|\n|\r)/gm, "");
     fetch(url, {
-        method: 'POST',
+        method: 'PUT',
         body: `{
+            "id" : "${post.id}",
             "heading" : "${mainHeading}",
             "subHeading" : "${subHeading}",
             "content" : "${content}",
@@ -45,12 +46,11 @@ function genratePost(url) {
     })
 }
 
-function showRes(result) {
 
+function showRes(result) {
     if (result.message != undefined) {
         alert(result.message);
     }else{
-        alert("posted");
+        alert("post updated");
     }
-
 }

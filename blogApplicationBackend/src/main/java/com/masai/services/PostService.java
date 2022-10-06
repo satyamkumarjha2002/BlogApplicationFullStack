@@ -138,4 +138,24 @@ public class PostService implements PostServiceIntr {
 		return true;
 	}
 
+	@Override
+	public boolean updatePost(Post post) throws PostException {
+		Optional<Post> postOptional = postRepo.findById(post.getId());
+		
+		if(postOptional.isEmpty()) {
+			throw new PostException("Post Not Found");
+		}
+		
+		postOptional.get().setHeading(post.getHeading());
+		postOptional.get().setSubHeading(post.getSubHeading());
+		postOptional.get().setContent(post.getContent());
+		postOptional.get().setImgLink(post.getImgLink());
+		
+		
+		
+		postRepo.save(postOptional.get());
+		
+		return true;
+	}
+
 }

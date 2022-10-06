@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -52,5 +53,11 @@ public class PostController {
     public ResponseEntity<Boolean> deletePost(@PathVariable Integer postId){
     	return new ResponseEntity<Boolean>( postServiceIntr.deletePost(postId),HttpStatus.OK);
     }
+    
+    @PutMapping("/update")
+    public ResponseEntity<Boolean> updatePost(@RequestBody Post post){
+    	return new ResponseEntity<Boolean>(postServiceIntr.updatePost(post),HttpStatus.OK);
+    }
+    
     
 }

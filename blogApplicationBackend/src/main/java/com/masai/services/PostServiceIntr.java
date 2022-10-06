@@ -13,4 +13,5 @@ public interface PostServiceIntr {
     public List<Post> getPostOfParticularUser(String uuid) throws PostException;
     public User getUserByPost(Integer id) throws PostException;
     public boolean deletePost(Integer postId) throws PostException;
+    public boolean updatePost(Post post) throws PostException;
 }
