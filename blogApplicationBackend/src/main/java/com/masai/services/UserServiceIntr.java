@@ -15,5 +15,6 @@ public interface UserServiceIntr {
 	public List<User> getAllUser();
 	public LoginInfo login(LoginCred loginCred) throws UserNotRegisteredException;
 	public User getUser(String uuid) throws LoginException;
+	public String logout(String uuid);
 
 }

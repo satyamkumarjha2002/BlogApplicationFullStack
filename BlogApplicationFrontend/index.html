@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/navbar.css">
     <script defer src="https://kit.fontawesome.com/c610c7a2ec.js"></script>
     <script src="script/index.js"></script>
-    <title>Document</title>
+    <title>Home</title>
 </head>
 
 <body>
@@ -40,8 +40,8 @@
             <div>
                 <i onclick="decrease_page()" id="left_arrow" class="fa-solid fa-arrow-left-long"></i>
             </div>
-            
-            <div >
+
+            <div>
                 <p id="page_number"></p>
             </div>
 
@@ -57,7 +57,4 @@
 
 </html>
 
-<script type="module">
-    import {navbar} from "./components/navbar.js";
-    document.querySelector("#navbar").innerHTML = navbar();
-</script>
+<script type="module" src="script/navbar.js"></script>

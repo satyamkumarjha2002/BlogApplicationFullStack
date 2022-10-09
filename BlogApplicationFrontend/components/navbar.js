@@ -5,7 +5,7 @@ let navbar = () =>{
 </div>
 <div id="buttons">
   <a id="reg" href="register.html">Register</a>
-  <a id="login" href="login.html">Login</a>
+  <a id="login" href="#">Login</a>
   <a id="profile"  href="profile.html">Profile</a>
 </div>
   `

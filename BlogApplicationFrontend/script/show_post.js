@@ -25,7 +25,6 @@ function getAllPostOfAUser(url) {
 
 function displayDetails(result) {
 
-    console.log(result);
     let mainDiv = document.getElementById("container");
     mainDiv.innerHTML = null;
     result.map(element => {
@@ -140,7 +139,6 @@ function increseDisLike(url) {
 
 let flag = true;
 function increaseComment(postId, userId, commentDivPerPost) {
-    console.log(postId,userId)
     let commnetMainDiv = commentDivPerPost;
      commnetMainDiv.innerHTML = null;
     let input = document.createElement("input");
@@ -246,7 +244,6 @@ function updatePost(post){
 }
 
 function deletePost(post){
-    console.log(post);
     fetch(`http://localhost:8080/api/post/delete/${post.id}`, {
         method: 'DELETE',
         headers: {

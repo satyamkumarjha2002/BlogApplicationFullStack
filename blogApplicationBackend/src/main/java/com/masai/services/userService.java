@@ -105,4 +105,12 @@ public class userService implements UserServiceIntr {
 		return userRepo.findById(userLoginStatus.getUserName()).get();
 	}
 
+	@Override
+	public String logout(String uuid) {
+		 CurrentSession logedUserSession = currentSessionRepo.findByUuid(uuid);
+		 currentSessionRepo.deleteById(logedUserSession.getUserName());
+		 System.out.println("done");
+		 return "done";
+	}
+
 }

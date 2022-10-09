@@ -5,15 +5,15 @@ let uuid = localStorage.getItem("uuid");
 let loggedUser = null;
 let pageNo = 1;
 let contentPerPage = 10;
-let sortByValue = "id";
+let sortByValue = "dateTime";
 
-function getAllPost(res,pageNo,contentPerPage,sortByValue) {
+function getAllPost(res, pageNo, contentPerPage, sortByValue) {
     loggedUser = res;
     console.log(loggedUser);
     fetchAllPost(`http://localhost:8080/api/post/getAllPost?pageNo=${pageNo}&totalCount=${contentPerPage}&sortByValue=${sortByValue}`);
 }
 
-function getLoggedUser(url,pageNo,contentPerPage,sortByValue) {
+function getLoggedUser(url, pageNo, contentPerPage, sortByValue) {
     fetch(url, {
         method: 'GET',
         headers: {
@@ -25,7 +25,7 @@ function getLoggedUser(url,pageNo,contentPerPage,sortByValue) {
     }).then(function (res) {
         return res.json();
     }).then(function (res) {
-        getAllPost(res,pageNo,contentPerPage,sortByValue);
+        getAllPost(res, pageNo, contentPerPage, sortByValue);
     })
 }
 
@@ -150,7 +150,7 @@ function increseDisLike(url) {
 
         })
         setTimeout(() => {
-            getLoggedUser(`http://localhost:8080/api/user/getUser/${uuid}`);
+            getLoggedUser(`http://localhost:8080/api/user/getUser/${uuid}`, pageNo, contentPerPage, sortByValue);
         }, 100);
     } else {
         alert(loggedUser.message); //here exception will occour those exception will store in loggeduser if the user is not loged in and i using exception message for alert;
@@ -242,7 +242,7 @@ function postComment(postId, userId) {
         }).then(function (res) {
             return res.json();
         }).then(function (res) {
-            getLoggedUser(`http://localhost:8080/api/user/getUser/${uuid}`);
+            getLoggedUser(`http://localhost:8080/api/user/getUser/${uuid}`, pageNo, contentPerPage, sortByValue);
         })
     } else {
         alert(loggedUser.message);
@@ -262,17 +262,17 @@ function increaseLike(url) {
         }).then(function (res) {
             return res.json();
         }).then(function (res) {
-            getLoggedUser(`http://localhost:8080/api/user/getUser/${uuid}`);
+            getLoggedUser(`http://localhost:8080/api/user/getUser/${uuid}`, pageNo, contentPerPage, sortByValue);
         })
-    
+
     } else {
         alert(loggedUser.message);
     }
 }
 
-function change_page_per_content(){
+function change_page_per_content() {
     contentPerPage = document.querySelector("#pageNo").value;
-    getLoggedUser(`http://localhost:8080/api/user/getUser/${uuid}`,pageNo,contentPerPage,sortByValue);
+    getLoggedUser(`http://localhost:8080/api/user/getUser/${uuid}`, pageNo, contentPerPage, sortByValue);
 }
 let pageNumber
 setTimeout(() => {
@@ -281,21 +281,36 @@ setTimeout(() => {
 }, 200);
 
 
-function decrease_page(){
+function decrease_page() {
     --pageNo;
-    if(pageNo>=1){
+    if (pageNo >= 1) {
         pageNumber.innerText = pageNo;
-        getLoggedUser(`http://localhost:8080/api/user/getUser/${uuid}`,pageNo,contentPerPage,sortByValue);
+        getLoggedUser(`http://localhost:8080/api/user/getUser/${uuid}`, pageNo, contentPerPage, sortByValue);
     }
-    
+
 }
 
-function increase_page(){
+function increase_page() {
     ++pageNo;
-    if(pageNo<=100){
+    if (pageNo <= 100) {
         pageNumber.innerText = pageNo;
-        getLoggedUser(`http://localhost:8080/api/user/getUser/${uuid}`,pageNo,contentPerPage,sortByValue);
+        getLoggedUser(`http://localhost:8080/api/user/getUser/${uuid}`, pageNo, contentPerPage, sortByValue);
     }
 }
 
-getLoggedUser(`http://localhost:8080/api/user/getUser/${uuid}`,pageNo,contentPerPage,sortByValue);
+getLoggedUser(`http://localhost:8080/api/user/getUser/${uuid}`, pageNo, contentPerPage, sortByValue);
+
+window.addEventListener("beforeunload",function(e){
+    // if(uuid!=undefined||uuid!=null){
+    //     fetch(`http://localhost:8080/api/user/logout/${uuid}`,{
+    //         method: 'DELETE',
+    //         headers: {
+    //             "Access-Control-Allow-Origin": "*",
+    //             "Access-Control-Allow-Methods": "HEAD, GET, POST, PUT, PATCH, DELETE",
+    //             "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token",
+    //             "Content-Type": "application/json"
+    //         }
+    //     })
+    //     localStorage.clear();
+    // }
+});

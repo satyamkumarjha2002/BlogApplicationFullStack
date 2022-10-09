@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/createPost.css">
-    <title>Document</title>
+    <title>Create Post</title>
 </head>
 <body>
     <div id="navbar">
@@ -14,6 +14,14 @@
     </div>
 
     <div id="container">
+
+        <select name="category" id="category">
+            <option value="all">Select category</option>
+            <option value="electronic">electronic</option>
+            <option value="politics">politics</option>
+            <option value="game">game</option>
+            <option value="entertainment">entertainment</option>
+        </select>
 
         <h2>Main heading</h2>
         <div class="text_area">
@@ -43,9 +51,5 @@
 </body>
 </html>
 
-<script type="module">
-    import {navbar} from "./components/navbar.js";
-    document.querySelector("#navbar").innerHTML = navbar();
-</script>
-
 <script src="script/createPost.js"></script>
+<script type="module" src="script/navbar.js"></script>
